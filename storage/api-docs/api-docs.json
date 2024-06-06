@@ -1,0 +1,94 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Usuarios",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http://swagger.local"
+        }
+    ],
+    "paths": {
+        "/api/peliculas": {
+            "get": {
+                "summary": "Mostrar peliculas por nombre y id de sala o fecha de publicacion",
+                "operationId": "e664ea09f508363693a7e9a277def819",
+                "parameters": [
+                    {
+                        "name": "nombre",
+                        "in": "query",
+                        "description": "Nombre de la pelicula",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "id_sala",
+                        "in": "query",
+                        "description": "ID de la sala",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "fecha_publicacion",
+                        "in": "query",
+                        "description": "Fecha de publicación de la pelicula",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "date"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Mostrar todas las películas filtradas",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Pelicula"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No se encontraron películas"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Pelicula": {
+                "title": "Pelicula",
+                "description": "Modelo de Pelicula",
+                "properties": {
+                    "id_pelicula": {
+                        "description": "ID de la película",
+                        "type": "integer"
+                    },
+                    "nombre": {
+                        "description": "Nombre de la película",
+                        "type": "string"
+                    },
+                    "duracion": {
+                        "description": "Duración de la película en minutos",
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}
