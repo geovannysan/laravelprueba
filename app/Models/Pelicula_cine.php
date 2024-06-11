@@ -9,7 +9,14 @@ class Pelicula_cine extends Model
 {
     protected $table = 'pelicula_cines';
 
-    protected $fillable = ['fecha_publicacion', 'fecha_fin', 'id_pelicula', 'id_sala'];
+   
+    protected $fillable = [
+        'fecha_publicacion',
+        'fecha_fin',
+        'id_pelicula',
+        'id_sala',
+        'id'
+    ];
 
     public function pelicula()
     {

@@ -14,7 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('pelicula_cines', function (Blueprint $table) {
-            $table->bigIncrements('id_pelicula_sala'); 
+             $table->id();
+            $table->integer('id_pelicula_sala'); 
             $table->date('fecha_publicacion'); 
             $table->date('fecha_fin'); 
             $table->unsignedBigInteger('id_pelicula'); 
@@ -35,5 +36,6 @@ return new class extends Migration
     public function down()
     {
         Schema::dropIfExists('pelicula_cines');
+        
     }
 };

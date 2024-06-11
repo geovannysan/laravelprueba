@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
         // ]);
         DB::transaction(function () {
             // Crear 9 salas de cine con estado
-            for ($i = 1; $i <= 9; $i++) {
+              for ($i = 1; $i <= 9; $i++) {
                 Sala_cine::create(['nombre' => 'Sala ' . $i, 'estado' => 1]);
             }
 
@@ -35,15 +35,15 @@ class DatabaseSeeder extends Seeder
             for ($f = 1; $f <= 15; $f++) {
                 $pelicula = Pelicula::create(['nombre' => 'Pelicula ' . $f, 'duracion' => 120]);
 
-                $id_sala = rand(1, 9);
+                $id_sala = rand(1, 5);
 
-                    Pelicula_cine::create([
-                        'fecha_publicacion' => now(),
-                        'fecha_fin' => now()->addDays(30),
-                        'id_pelicula' => $f,
-                        'id_sala' => $id_sala,
-                    ]);
-                
+                Pelicula_cine::create([
+                    'fecha_publicacion' => now(),
+                    'fecha_fin' => now()->addDays(30),
+                    'id_pelicula' => $f,
+                    'id_pelicula_sala' => $f,
+                    'id_sala' => $id_sala,
+                ]);
             }
         });
     }
